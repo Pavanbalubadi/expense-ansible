@@ -4,3 +4,30 @@
     dest: /etc/rsyslog.d/{{component}}.conf
   wheen: is_rsyslog_needed
 
+- name: Restart rsyslog conf
+  ansible.builtin.systemd_service:
+    name: rsyslog
+    state: restarted
+    enabled: true
+  wheen: is_rsyslog_needed
+
+- name: copy the elastic repo (filebeat) file
+  ansible.builtin.template:
+    src: elastic.repo
+    dest: /etc/yum.repos.d/elastic.repo
+
+- name: Install filebeat
+  ansible.builtin.dnf:
+    name: filebeat
+    state: present
+
+- name: copy the filebeat configuration file
+  ansible.builtin.template:
+    src: filebeat.yml
+    dest: /etc/filebeat/filebeat.yml
+
+- name: Restart filebeat
+  ansible.builtin.systemd_service:
+    name: filebeat
+    state: restarted
+    enabled: true
