@@ -25,4 +25,8 @@
     state: reloaded
     enabled: true
 
+- name: import role
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: app-prereq
 

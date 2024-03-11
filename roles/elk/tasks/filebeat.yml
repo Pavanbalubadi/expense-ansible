@@ -1,0 +1,6 @@
+- name: copy rsyslog conf
+  ansible.builtin.template:
+    src: rsyslog.conf
+    dest: /etc/rsyslog.d/{{component}}.conf
+  wheen: is_rsyslog_needed
+
