@@ -1,0 +1,16 @@
+- name: Remove the old app directory
+  ansible.builtin.dnf:
+    path : "{{app_dir}}"
+    state: absent
+
+- name: Create the app directory
+  ansible.builtin.dnf:
+    path : "{{app_dir}}"
+    state: present
+
+
+- name: Download the app content
+  ansible.builtin.unarchive:
+    src: /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/{{component}}.zip
+    path : "{{app_dir}}"
+    remote_src: yes
