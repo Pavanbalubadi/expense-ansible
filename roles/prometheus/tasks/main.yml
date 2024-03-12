@@ -1,0 +1,9 @@
+- name: copy the prometheus configuration
+  ansible.builtin.template:
+    src: prometheus.yml
+    dest: /opt/prometheus/prometheus.yml
+
+- name: copy alert rules
+  ansible.builtin.template:
+    src: common.yml
+    dest: /opt/prometheus/alert-rules/common.yml
