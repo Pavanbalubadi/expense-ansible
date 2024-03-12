@@ -1,0 +1,25 @@
+groups:
+  - name: {{component}}-{{env}}
+    rules:
+      - alert:
+        expr:
+        for: 1m
+        labels:
+          severity: critical
+          component: {{component}}
+          env: {{env}}
+        annotations:
+          summary:
+          description:
+
+
+      - alert: instance down
+        expr: up <1
+        for: 1m
+        labels:
+          severity: critical
+          component: {{component}}
+          env: {{env}}
+        annotations:
+          summary:
+          description:
