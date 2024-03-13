@@ -25,8 +25,20 @@
     state: reloaded
     enabled: true
 
-- name: import role app-prereq from common
+- name: Import role app-prereq from common
   ansible.builtin.import_role:
     name: common
     tasks_from: app-prereq
+
+- name: Import elk
+  ansible.builtin.import_role:
+    name: elk
+    tasks_from: filebeat
+
+- name: Import prometheus node-exporter
+  ansible.builtin.import_role:
+    name: prometheus
+    tasks_from: node-exporter
+
+
 
