@@ -1,10 +1,10 @@
 - name: Remove the old app directory
-  ansible.builtin.dnf:
+  ansible.builtin.file:
     path : "{{app_dir}}"
     state: absent
 
 - name: Create the app directory
-  ansible.builtin.dnf:
+  ansible.builtin.file:
     path : "{{app_dir}}"
     state: present
 
