@@ -8,9 +8,8 @@
     path : "{{app_dir}}"
     state:  directory
 
-
-- name: Download the app content
+- name: Download Extract Application Content
   ansible.builtin.unarchive:
-    src: /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/{{component}}.zip
-    path : "{{app_dir}}"
+    src: https://expense-artifacts.s3.amazonaws.com/{{component}}.zip
+    dest: "{{ app_dir }}"
     remote_src: yes
