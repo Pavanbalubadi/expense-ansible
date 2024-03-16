@@ -1,4 +1,4 @@
-- name : setup hostname
+- name: setup hostname
   ansible.builtin.shell : sudo set-hostname {{component}}-{{env}}
 
 - name: Install nginx
