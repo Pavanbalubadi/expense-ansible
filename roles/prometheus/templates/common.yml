@@ -8,11 +8,5 @@ groups:
           severity: critical
         annotations:
           summary: InstanceDown alert
-      - alert: Instancedown
-        expr: node_systemd_unit_stste{export_name="nginx.service",state="active"} == 0
-        for: 1m
-        labels:
-          severity: critical
-        annotations:
-          summary: InstanceDown alert
+
 

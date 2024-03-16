@@ -1,25 +1,13 @@
 groups:
   - name: {{component}}-{{env}}
     rules:
-      - alert:
-        expr:
+      - alert: NginxServiceMonitor
+        expr: node_systemd_unit_state{exported_name="nginx.service",state="active"} == 0
         for: 1m
         labels:
           severity: critical
-          component: {{component}}
+          component: {{componrnt}}
           env: {{env}}
         annotations:
-          summary:
-          description:
+          summary: Critical | Frontend Nginx Service Down
 
-
-      - alert: instance down
-        expr: up <1
-        for: 1m
-        labels:
-          severity: critical
-          component: {{component}}
-          env: {{env}}
-        annotations:
-          summary:
-          description:
