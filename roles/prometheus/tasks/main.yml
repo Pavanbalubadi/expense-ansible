@@ -3,10 +3,10 @@
     src: prometheus.yml
     dest: /opt/prometheus/prometheus.yml
 
-- name: copy alert rules
+- name: Copy Alert Rules
   ansible.builtin.template:
     src: common.yml
-    dest: /opt
+    dest: /opt/prometheus/alert-rules/common.yml
 
 
 - name: list the all files in bucket
