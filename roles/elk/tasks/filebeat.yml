@@ -2,14 +2,14 @@
   ansible.builtin.template:
     src: rsyslog.conf
     dest: /etc/rsyslog.d/{{component}}.conf
-  wheen: is_rsyslog_needed
+  when: is_rsyslog_needed
 
 - name: Restart rsyslog conf
   ansible.builtin.systemd_service:
     name: rsyslog
     state: restarted
     enabled: true
-  wheen: is_rsyslog_needed
+  when: is_rsyslog_needed
 
 - name: copy the elastic repo (filebeat) file
   ansible.builtin.template:
