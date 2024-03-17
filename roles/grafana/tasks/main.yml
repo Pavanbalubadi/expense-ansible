@@ -5,7 +5,7 @@
 
 - name: Add grafana dashboard
   community.grafana.grafana_dashboard:
-    grafana_url: http://172.31.10.18:3000
+    grafana_url: http://172.31.4.134:3000
     grafana_api_key: "{{ lookup('amazon.aws.aws_ssm', 'grafana_api_key', region='us-east-1' ) }}"
     state: present
     commit_message: Updated by ansible
