@@ -63,7 +63,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 10,
         "x": 0,
         "y": 0
@@ -93,9 +93,11 @@
             "uid": "ddflfskuy9ybkd"
           },
           "editorMode": "code",
-          "expr": "up",
+          "expr": "up{name=\"{{component}}-{{env}}\"}",
           "instant": false,
-          "legendFormat": "{{job}}",
+        {% raw %}
+          "legendFormat": "{{name}}",
+        {% endraw %}
           "range": true,
           "refId": "A"
         }
@@ -122,7 +124,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 45,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -130,7 +132,7 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "linear",
+            "lineInterpolation": "stepBefore",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -164,7 +166,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 11,
         "x": 10,
         "y": 0
@@ -189,14 +191,16 @@
             "uid": "ddflfskuy9ybkd"
           },
           "editorMode": "code",
-          "expr": "100 *(1-((node_memory_MemFree_bytes+ node_memory_Cached_bytes+ node_memory_Buffers_bytes) / node_memory_MemTotal_bytes))",
+          "expr": "100 *(1-((node_memory_MemFree_bytes{name=\"{{component}}-{{env}}\"}+ node_memory_Cached_bytes{name=\"{{component}}-{{env}}\"}+ node_memory_Buffers_bytes{name=\"{{component}}-{{env}}\"}) / node_memory_MemTotal_bytes{name=\"{{component}}-{{env}}\"}))",
           "instant": false,
-          "legendFormat": "__auto",
+        {% raw %}
+          "legendFormat": "{{name}}",
+        {% endraw %}
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Panel Title",
+      "title": "Memory used %",
       "type": "timeseries"
     }
   ],
@@ -211,8 +215,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "New dashboard",
-  "uid": "adflg66wu56v4b",
-  "version": 5,
+  "title": "{{component}}",
+  "version": 8,
   "weekStart": ""
 }
