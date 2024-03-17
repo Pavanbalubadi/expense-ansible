@@ -191,7 +191,7 @@
             "uid": "ddflfskuy9ybkd"
           },
           "editorMode": "code",
-          "expr": "100 *(1-((node_memory_MemFree_bytes{name=\"{{component}}\"}+ node_memory_Cached_bytes{name=\"{{component}}-{{env}}\"}+ node_memory_Buffers_bytes{name=\"{{component}}-{{env}}\"}) / node_memory_MemTotal_bytes{name=\"{{component}}-{{env}}\"}))",
+          "expr": "100 *(1-((node_memory_MemFree_bytes{name=\"{{component}}\"}+ node_memory_Cached_bytes{name=\"{{component}}\"}+ node_memory_Buffers_bytes{name=\"{{component}}\"}) / node_memory_MemTotal_bytes{name=\"{{component}}\"}))",
           "instant": false,
         {% raw %}
           "legendFormat": "{{name}}",
