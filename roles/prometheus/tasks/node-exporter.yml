@@ -18,7 +18,7 @@
 
 - name: import grafana - Dashboard creation
   ansible.builtin.import_role:
-      name: grafana
+    name: grafana
 
 - name: import prometheus - Node Exporter
   ansible.builtin.import_role:
