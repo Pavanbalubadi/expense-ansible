@@ -93,7 +93,7 @@
             "uid": "ddflfskuy9ybkd"
           },
           "editorMode": "code",
-          "expr": "up{name=\"frontend\"}",
+          "expr": "up{name=\"{{env}}-{{component}}\"}",
           "instant": false,
         {% raw %}
           "legendFormat": "{{name}}",
