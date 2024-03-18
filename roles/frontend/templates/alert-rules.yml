@@ -9,5 +9,61 @@ groups:
           component: {{component}}
           env: {{env}}
         annotations:
-          summary: Critical | Frontend Nginx Service Down
+          summary: Critical
+          description: Frontend Nginx Service Down
 
+      - alert: CPUUsageAlertWarning
+        expr: avg by (instance) (100 - (rate(node_cpu_seconds_total{mode="idle"}[5m]) * 100)) > 75
+        for: 1m
+        labels:
+          severity: Warning
+          component: {{component}}
+          env: {{env}}
+        annotations:
+          summary: Warning
+          description: The CPUUsage has exceeded 75% form last 1 minutes.
+
+
+      - alert: CPUUsageAlertCritical
+        expr: avg by (instance) (100 - (rate(node_cpu_seconds_total{mode="idle"}[5m]) * 100)) > 90
+        for: 1m
+        labels:
+          severity: Critical
+          component: {{component}}
+          env: {{env}}
+        annotations:
+          summary: Critical
+          description: The CPUUsage has exceeded 90% form last 1 minutes.
+
+      - alert: MemoryUsageAlertWarning
+        expr: ((node_memory_MemFree_bytes + node_memory_Cached_bytes + node_memory_Buffers_bytes) / node_memory_MemTotal_bytes) * 100 > 75
+        for: 1m
+        labels:
+          severity: Warning
+          component: {{component}}
+          env: {{env}}
+        annotations:
+          summary: Warning
+          description: The MemoryUsage has exceeded 75% form last 1 minutes.
+
+      - alert: MemoryUsageAlertCritical
+        expr: ((node_memory_MemFree_bytes + node_memory_Cached_bytes + node_memory_Buffers_bytes) / node_memory_MemTotal_bytes) * 100 > 90
+        for: 1m
+        labels:
+          severity: Critical
+          component: {{component}}
+          env: {{env}}
+        annotations:
+          summary: Critical
+          description: The MemoryUsage has exceeded 90% form last 1 minutes.
+
+      - alert: NetworkBWMonitorWaitQue
+        expr: rate(node_ethtool_bw_in_allowance_exceeded[1m]) > 0
+        for: 3m
+        labels:
+          severity: Critical
+          component: {{component}}
+          env: {{env}}
+        annotations:
+          summary: Critical
+          description: The NetworkBWMonitorWaitQue high form last 3 minutes.
