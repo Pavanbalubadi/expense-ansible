@@ -37,7 +37,7 @@
     tasks_from: node-exporter
 
 - name: Install new relic agent
-  ansible.builtin.shell: curl -Ls https://download.newrelic.com/install/newrelic-cli/scripts/install.sh | bash && sudo NEW_RELIC_API_KEY="{{ lookup('amazon.aws.aws_ssm', 'NEW_RELIC_API_KEY', region='us-east-1' ) }}" NEW_RELIC_ACCOUNT_ID=4368081 NEW_RELIC_REGION=US /usr/local/bin/newrelic install -n nginx-open-source-integration --tag {{component}}
+ # ansible.builtin.shell: curl -Ls https://download.newrelic.com/install/newrelic-cli/scripts/install.sh | bash && sudo NEW_RELIC_API_KEY="{{ lookup('amazon.aws.aws_ssm', 'NEW_RELIC_API_KEY', region='us-east-1' ) }}" NEW_RELIC_ACCOUNT_ID=4368081 NEW_RELIC_REGION=US /usr/local/bin/newrelic install -n nginx-open-source-integration --tag {{component}}
 
 - name: Install newrelic nginx agent
   ansible.builtin.dnf:
