@@ -54,3 +54,4 @@
     src: nr-nginx-log
     dest: /etc/newrelic-infra/logging.d/nginx-log.yml
 
+##
