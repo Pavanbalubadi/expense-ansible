@@ -4,7 +4,7 @@ Description = Backend Service
 [Service]
 User=expense
 Environment=DB_HOST="<MYSQL-SERVER-IPADDRESS>"
-ExecStart=/bin/node /app/index.js
+ExecStart=/bin/bash /app/run.sh
 SyslogIdentifier=backend
 
 [Install]
