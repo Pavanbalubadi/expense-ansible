@@ -30,6 +30,11 @@
     component: frontend
     app_user: expense
 
+- name: Download NodeJS Dependencies
+  ansible.builtin.shell: npm install
+  args:
+    chdir: /app
+
 - name: Install new relic nodejs library
   ansible.builtin.shell: npm install newrelic --save
   args:
