@@ -1,3 +1,6 @@
+- name: Set HostName
+  ansible.builtin.shell: set-hostname {{env}}-{{component}}
+
 - name: Disable MySQL default Version
   ansible.builtin.shell: dnf module disable mysql -y
 
