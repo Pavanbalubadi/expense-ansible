@@ -10,8 +10,10 @@ receivers:
       - to: balubadipavan@gmail.com
         from: balubadipavan@gmail.com
         smarthost: email-smtp.us-east-1.amazonaws.com:587
-        auth_username: AKIA55FNFTSVX5TACBNP
-        auth_password: BO3m+5IFpLbuO+TK1LPCr/cteVR1N7TJkQbPaeuJjD3r
+        #auth_username: AKIA55FNFTSVX5TACBNP
+        auth_username: "{{ lookup('amazon.aws.aws_ssm', 'ses.username', region='us-east-1' ) }}"
+        #auth_password: BO3m+5IFpLbuO+TK1LPCr/cteVR1N7TJkQbPaeuJjD3r
+        auth_password: "{{ lookup('amazon.aws.aws_ssm', 'ses.password', region='us-east-1' ) }}"
         send_resolved: true
 inhibit_rules:
   - source_match:
